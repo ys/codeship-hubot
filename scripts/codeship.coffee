@@ -23,7 +23,7 @@ module.exports = (robot) ->
     robot.brain.codeship ?= {}
     get_status(robot.brain.codeship, msg, ship_project, branch)
 
-  robot.respond /ship ?([\w.\-_]+)/i, (msg) ->
+  robot.respond /ship status ?([\w.\-_]+)/i, (msg) ->
     ship_project = msg.match[1].trim()
     robot.brain.codeship ?= {}
     get_status(robot.brain.codeship, msg, ship_project, "master")
