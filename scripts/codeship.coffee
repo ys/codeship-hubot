@@ -17,17 +17,23 @@ module.exports = (robot) ->
     robot.brain.codeship[ship_project] = ship_uuid
     msg.send "Added ship #{ship_project}"
 
-  robot.respond /ship ?([\w .\-_]+)/i, (msg) ->
+  robot.respond /ship ?([\w.\-_]+) ?([\w.\/-_]+)/i, (msg) ->
     ship_project = msg.match[1].trim()
+    branch = msg.match[2].trim()
+    get_status(msg, ship_project, branch)
+
+  robot.respond /ship ?([\w.\-_]+)/i, (msg) ->
+    ship_project = msg.match[1].trim()
+    get_status(msg, ship_project, "master")
+
+
+get_status = (msg, ship_project, branch) ->
     robot.brain.codeship ?= {}
     ship_uuid = robot.brain.codeship[ship_project]
     if !ship_uuid
       return msg.send "You need to first add a ship with that name"
-    get_status(msg, ship_uuid, "master")
-
-
-get_status = (msg, ship_uuid, branch) ->
-    codeship_status_url = "http://codeship-status.herokuapp.com/#{ship_uuid}/#{branch}"
+    codeship_status_url = "https://codeship-status.herokuapp.com/#{ship_uuid}/#{branch}"
+    log codeship_status_url
     msg.http(codeship_status_url).get() (err, res, body) ->
       try
         json = JSON.parse(body)
