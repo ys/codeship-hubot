@@ -27,7 +27,7 @@ module.exports = (robot) ->
 
 
 get_status = (msg, ship_uuid, branch) ->
-    codeship_status_url = "http://codeship_status.herokuapp.com/#{ship_uuid}/#{branch}"
+    codeship_status_url = "http://codeship-status.herokuapp.com/#{ship_uuid}/#{branch}"
     msg.http(codeship_status_url).get() (err, res, body) ->
       try
         json = JSON.parse(body)
