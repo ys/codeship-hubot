@@ -20,14 +20,13 @@ module.exports = (robot) ->
   robot.respond /ship ?([\w.\-_]+) ?([\w.\/-_]+)/i, (msg) ->
     ship_project = msg.match[1].trim()
     branch = msg.match[2].trim()
-    get_status(msg, ship_project, branch)
+    get_status(self, msg, ship_project, branch)
 
   robot.respond /ship ?([\w.\-_]+)/i, (msg) ->
     ship_project = msg.match[1].trim()
-    get_status(msg, ship_project, "master")
+    get_status(self, msg, ship_project, "master")
 
-
-  get_status = (msg, ship_project, branch) ->
+  get_status = (robot, msg, ship_project, branch) ->
     robot.brain.codeship ?= {}
     ship_uuid = robot.brain.codeship[ship_project]
     if !ship_uuid
