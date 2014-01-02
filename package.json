@@ -1,0 +1,17 @@
+{
+  "name": "codeship-hubot",
+  "version": "0.0.1",
+  "description": "Codeship project status in the room",
+  "repository": [
+  {
+    "type": "git",
+    "url": "https://github.com/ys/dcodeship-hubot.git"
+  }
+  ],
+    "main": "./index",
+    "directories": { },
+    "dependencies": { },
+    "engines": {
+      "node": ">=0.8.0"
+    }
+}
