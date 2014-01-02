@@ -27,7 +27,7 @@ module.exports = (robot) ->
     get_status(msg, ship_project, "master")
 
 
-get_status = (msg, ship_project, branch) ->
+  get_status = (msg, ship_project, branch) ->
     robot.brain.codeship ?= {}
     ship_uuid = robot.brain.codeship[ship_project]
     if !ship_uuid
