@@ -9,7 +9,7 @@
 #   Yannick @yann_ck
 
 module.exports = (robot) ->
-  robot.respond /ship ?([\w.\-_]+) is (.*)/i, (msg) ->
+  robot.respond /ship ?(\w+) is (.*)/i, (msg) ->
     ship_project = msg.match[1].trim()
     ship_uuid = msg.match[2].trim()
 
@@ -17,13 +17,13 @@ module.exports = (robot) ->
     robot.brain.codeship[ship_project] = ship_uuid
     msg.send "Added ship #{ship_project}"
 
-  robot.respond /ship status ([\w.\-_]+) at ([\w.\/-_]+)/i, (msg) ->
+  robot.respond /ship status (\w+) at ([\w.\/-_]+)/i, (msg) ->
     ship_project = msg.match[1].trim()
     branch = msg.match[2].trim()
     robot.brain.codeship ?= {}
     get_status(robot.brain.codeship, msg, ship_project, branch)
 
-  robot.respond /ship status ([\w.\-_]+)/i, (msg) ->
+  robot.respond /ship status (\w+)/i, (msg) ->
     ship_project = msg.match[1].trim()
     robot.brain.codeship ?= {}
     get_status(robot.brain.codeship, msg, ship_project, "master")
