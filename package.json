@@ -1,6 +1,6 @@
 {
   "name": "codeship-hubot",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Codeship project status in the room",
   "repository": [
   {
