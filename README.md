@@ -1,5 +1,5 @@
 ##Hubot scripts for postgres dataclips
-**Postgres heroku dataclips for Hubot**
+**Codeship status in your favorite chat room**
 
 ### Installation
 
@@ -7,19 +7,19 @@ Add the repository to your hubot's package.json:
 
 ```
 dependencies: {
-  "dataclips-hubot": "git://github.com/ys/dataclips-hubot.git"
+  "codeship-hubot": "git://github.com/ys/codeship-hubot.git"
 }
 ```
 
 Include the package in your hubot's external-scripts.json
 
 ```
-["dataclips-hubot"]
+["codeship-hubot"]
 ```
 
 ### TODO
 
-- Better support of complex values (for the moment mostly a simply string interpolation)
+* Better support of branches names
 
 ### License
 
